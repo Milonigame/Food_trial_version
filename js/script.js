@@ -182,15 +182,13 @@ window.addEventListener('DOMContentLoaded', function() {
             const element=document.createElement('div');
             element.innerHTML=`
             <div class="menu__item">
-                <img src="img/tabs/vegy.jpg" alt="vegy">
-                <h3 class="menu__item-subtitle">Меню "Фитнес"</h3>
-                <div class="menu__item-descr">Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. 
-                Продукт активных и здоровых людей. 
-                Это абсолютно новый продукт с оптимальной ценой и высоким качеством!</div>
+                <img src=${this.src} alt=${this.alt}>
+                <h3 class="menu__item-subtitle">${this.tittle}</h3>
+                <div class="menu__item-descr">${this.descr}</div>
                 <div class="menu__item-divider"></div>
                 <div class="menu__item-price">
                     <div class="menu__item-cost">Цена:</div>
-                    <div class="menu__item-total"><span>229</span> грн/день</div>
+                    <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
                 </div>
             </div>`;
             this.parent.append(element);
