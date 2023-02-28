@@ -278,4 +278,3 @@ const url = showCurrentURL.bind(urlObj);
  
 console.log(url);
 
-alert(5);
