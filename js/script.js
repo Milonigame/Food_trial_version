@@ -237,7 +237,43 @@ new MenuCard(
 
 ).render();
 
+//Forms
+const forms=document.querySelectorAll('form');//получение всех форм
 
+const message={
+loading: 'Загрузка',
+successs:'Спасибо! Мы скоро свяжемся с вами',
+failure:'Что-то пошло не так...'
+};
+
+
+function postData(form){//функция отвечающая за постинг данных(эта функция будет принимать в себя какую-то форму(аргумент))
+    form.addEventListener('submit', (e)=>{//будет срабатывать каждый раз когда будем пытаться отправить какую-то форму
+        e.preventDefault();//чтобы отменить стандартное поведение браузера
+
+        const statusMessage=document.createElement('div');
+        statusMessage.classList.add('status');
+        statusMessage.textContent=message.loading;
+        form.append(statusMessage);
+
+        const request=new XMLHttpRequest();
+        request.open('POST', 'server.php');
+
+        request.setRequestHeader('Content-type', 'multipart/form-data');
+        const formData=new FormData(form);
+
+        request.send(formData);
+        request.addEventListener('load',()=>{
+
+            if (request.status===200){
+                console.log(request.response);
+                statusMessage.textContent=message.successs;
+            }else{
+                statusMessage.textContent=message.failure;
+            }
+        });
+    });
+}
 
 
 
